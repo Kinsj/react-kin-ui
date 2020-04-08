@@ -1,6 +1,20 @@
 {
-  "dependencies": {},
+  "name": "gulu",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'Error: no test specified' && exit 1",
+    "dev": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "devDependencies": {
+    "@types/react": "^16.9.32",
+    "@types/react-dom": "^16.9.6",
     "awesome-typescript-loader": "^5.2.1",
     "html-webpack-plugin": "^4.0.4",
     "typescript": "^3.8.3",
