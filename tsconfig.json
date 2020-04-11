@@ -15,6 +15,8 @@
     "typeRoots": ["node_modules/@types"],
     "jsx": "react"
   },
-  "include": ["lib/**/*.ts"],
+  "include": [
+    "lib/**/*"
+  ],
   "exclude": ["node_modules"]
 }
