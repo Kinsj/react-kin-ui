@@ -1,7 +1,7 @@
 import React from 'react';
 import './importIcons';
 import './icon.scss';
-import classes from './helpers/classes';
+import classes from '../helpers/classes';
 
 // 申明Icon 组件接受的props属性的类型
 interface IconProps extends React.SVGAttributes<SVGElement> {
