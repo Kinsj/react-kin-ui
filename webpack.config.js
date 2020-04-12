@@ -22,6 +22,11 @@ module.exports = {
         test: /\.svg$/,
         loader: 'svg-sprite-loader',  // 把 #引入的(import)# svg文件放入html/body里
         include: path.resolve(__dirname, 'lib/icons')
+      },
+      //  css
+      {
+        test: /\.s[ac]ss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   },
