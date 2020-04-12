@@ -4,6 +4,10 @@ import Icon from './icon';
 
 ReactDOM.render(
   <div>
-    <Icon name="qq" onClick={()=>{console.log(1)}}/>
+    <Icon name="qq" onClick={
+      (e) => {
+        console.log(e.target);
+      }
+    }/>
   </div>
   , document.querySelector('#root'));
