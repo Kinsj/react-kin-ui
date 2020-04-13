@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="9" failures="0" time="4.269">
+  <testsuite name="classes" errors="0" failures="0" skipped="0" timestamp="2020-04-13T12:23:39" time="1.838" tests="5">
+    <testcase classname="classes 接受1个 className" name="classes 接受1个 className" time="0.002">
+    </testcase>
+    <testcase classname="classes 接受2个 className" name="classes 接受2个 className" time="0">
+    </testcase>
+    <testcase classname="classes 接受 undefined 结果不会有空格或 undefined" name="classes 接受 undefined 结果不会有空格或 undefined" time="0">
+    </testcase>
+    <testcase classname="classes 接受 各种奇怪的值" name="classes 接受 各种奇怪的值" time="0">
+    </testcase>
+    <testcase classname="classes 接受 0 个参数" name="classes 接受 0 个参数" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="icon" errors="0" failures="0" skipped="0" timestamp="2020-04-13T12:23:41" time="0.215" tests="2">
+    <testcase classname="icon render successfully" name="icon render successfully" time="0.008">
+    </testcase>
+    <testcase classname="icon onClick" name="icon onClick" time="0.024">
+    </testcase>
+  </testsuite>
+  <testsuite name="button tests" errors="0" failures="0" skipped="0" timestamp="2020-04-13T12:23:41" time="0.164" tests="1">
+    <testcase classname="button tests 是个div" name="button tests 是个div" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="我的第一个测试用例" errors="0" failures="0" skipped="0" timestamp="2020-04-13T12:23:41" time="0.132" tests="1">
+    <testcase classname="我的第一个测试用例 1 + 2 = 3" name="我的第一个测试用例 1 + 2 = 3" time="0">
+    </testcase>
+  </testsuite>
+</testsuites>
