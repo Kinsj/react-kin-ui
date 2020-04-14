@@ -49,6 +49,6 @@ workflows:
       - build:
         requires:
           - test
-      -test:
+      - test:
         requires:
           - prepare
