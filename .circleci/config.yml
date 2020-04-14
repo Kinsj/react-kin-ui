@@ -45,7 +45,11 @@ workflows:
   test-and-build:
     jobs:
       - prepare
-      - test
-      - build
+      - test:
+          requires:
+            - prepare
+      - build:
+          requires:
+            - test
   version: 2
 
