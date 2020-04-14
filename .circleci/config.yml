@@ -42,13 +42,10 @@ jobs:
           path: test-results
 
 workflows:
-  version: 2
-  build_accept_deploy:
+  test-and-build:
     jobs:
       - prepare
-      - build:
-        requires:
-          - test
-      - test:
-        requires:
-          - prepare
+      - test
+      - build
+  version: 2
+
