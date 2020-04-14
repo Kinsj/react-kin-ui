@@ -16,7 +16,7 @@ jobs:
           paths:
             - node_modules
           key: v2-dependencies-{{ checksum "package.json" }}
-      - presist_to_workspace:
+      - persist_to_workspace:
           root: .
           paths:
             - node_modules
@@ -27,7 +27,7 @@ jobs:
       - attach_workspace:
           at: .
       - run: yarn build
-      - presist_to_workspace:
+      - persist_to_workspace:
           root: .
           paths:
             - dist
