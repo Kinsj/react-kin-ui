@@ -1,6 +1,6 @@
 import React from 'react';
-import './importIcons';
 import './icon.scss';
+import './importIcons';
 import classes from '../helpers/classes';
 
 // 申明Icon 组件接受的props属性的类型
