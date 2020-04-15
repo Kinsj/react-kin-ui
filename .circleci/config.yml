@@ -48,8 +48,8 @@ workflows:
       - test:
           requires:
             - prepare
-#      - build:
-#          requires:
-#            - test
+      - build:
+          requires:
+            - test
   version: 2
 
