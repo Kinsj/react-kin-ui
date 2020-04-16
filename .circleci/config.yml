@@ -29,8 +29,11 @@ jobs:
       - run: yarn build
       - persist_to_workspace:
           root: .
-          paths:
+          paths:  # 保留以下四个文件，留到下个阶段（publish）用
             - dist
+            - package.json
+            - LICENSE
+            - README.md
   test:
     <<: *defaults
     steps:
@@ -40,6 +43,12 @@ jobs:
       - run: yarn ci
       - store_test_results:
           path: test-results
+  publish:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: .  # attach_workspace 就是进入工作区
+      - run: npm publish
 
 workflows:
   test-and-build:
@@ -51,5 +60,8 @@ workflows:
       - build:
           requires:
             - test
+      - publish:
+          requires:
+            - build
   version: 2
 
