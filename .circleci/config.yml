@@ -67,7 +67,7 @@ workflows:
           filters: # 只在以下条件指定的分支tag下面才会跑 publish 工作流
             tags:
               only: /^v[0-9]+(\.[0-9]+)*/
-            branchs:
+            branches:
               ignore: /.*/  # 忽略所有分支，只看tag
   version: 2
 
