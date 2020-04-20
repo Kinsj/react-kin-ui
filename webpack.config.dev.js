@@ -5,10 +5,13 @@ const base = require('./webpack.config');
 // 得到完整的 开发环境 webpack 配置
 module.exports = Object.assign({}, base, {
     mode: 'development',
+    entry: {
+        example: './example.tsx'
+    },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Gulu',
-            template: "index.html"
+            template: "example.html"
         })
     ],
 });
