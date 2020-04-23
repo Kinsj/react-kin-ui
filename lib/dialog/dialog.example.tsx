@@ -1,9 +1,18 @@
 import React, {useState} from 'react';
-import Dialog from './dialog';
+import Dialog, {alert, confirm, modal} from './dialog';
 
 export default function () {
   const [x, setX] = useState(false);
   const [y, setY] = useState(false);
+
+  // openModal 调用 Dialog 组件开放的 modal api
+  const openModal = () => {
+    // modal的返回值为关闭Dialog操作接口
+    const close = modal(<h1>你好
+      <button onClick={() => {close();}}>关闭</button>
+    </h1>);
+  };
+
   return (
     <div>
       <div>
@@ -25,6 +34,19 @@ export default function () {
         ]} onClose={() => {setY(false);}}>
           <div>hi</div>
         </Dialog>
+      </div>
+
+      <div>
+        <h1>alert API</h1>
+        <button onClick={() => {alert('hi');}}>alert</button>
+        <button
+          onClick={() => {
+            confirm('hi',
+              () => {console.log('你点击了yes');},
+              () => {console.log('你点击了no');});
+          }}>confirm
+        </button>
+        <button onClick={openModal}>modal</button>
       </div>
     </div>
 
