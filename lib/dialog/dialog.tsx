@@ -38,13 +38,13 @@ const Dialog: React.FunctionComponent<Props> = (props) => {
         <header className={sc('header')}>提示</header>
         <main className={sc('main')}>{props.children}</main>
         {props.buttons && props.buttons.length &&
-          <footer className={sc('footer')}>
-            {/*{props.buttons}  这种写法直接渲染数组会出现没有key的问题，没有key性能不好，且会报warning, 用以下办法解决*/
-              props.buttons && props.buttons.map((button, index) => {
-                return React.cloneElement(button, {key: index}); // 用React.cloneElement复制ReactNode并添加属性key即可
-              })
-            }
-          </footer>
+        <footer className={sc('footer')}>
+          {/*{props.buttons}  这种写法直接渲染数组会出现没有key的问题，没有key性能不好，且会报warning, 用以下办法解决*/
+            props.buttons && props.buttons.map((button, index) => {
+              return React.cloneElement(button, {key: index}); // 用React.cloneElement复制ReactNode并添加属性key即可
+            })
+          }
+        </footer>
         }
       </div>
     </Fragment> :
@@ -59,9 +59,10 @@ Dialog.defaultProps = {
   closeOnClickMask: false
 };
 
+
 // API:
-// 1. alert
-const alert = (content: string) => {
+// 3. modal 输入值为 ReactNode 类型， 返回关闭操作接口
+const modal = (content: ReactNode, buttons?: Array<ReactElement>, onClose?: () => void) => {
   const onCloseHandle = () => {
     // 关闭时无法直接修改visible属性(闭包内部属性)，这里用一个新的组件visible为false来覆盖(我不懂为什么不直接卸载)
     ReactDOM.render(React.cloneElement(component, {visible: false}), div);
@@ -71,56 +72,41 @@ const alert = (content: string) => {
   };
   const component = <Dialog
     visible={true}
-    onClose={onCloseHandle}
-    buttons={[<button onClick={onCloseHandle}>OK</button>]}
-  >{content}</Dialog>;
-  const div = document.createElement('div');
-  document.body.appendChild(div);
-  ReactDOM.render(component, div);
-};
-
-// 2. confirm 比 alert 多两个button
-const confirm = (content: string, yes?: () => void, no?: () => void) => {
-  const onYes = () => {
-    ReactDOM.render(React.cloneElement(component, {visible: false}), div);
-    ReactDOM.unmountComponentAtNode(div);
-    div.remove();
-    yes && yes();
-  };
-  const onNo = () => {
-    ReactDOM.render(React.cloneElement(component, {visible: false}), div);
-    ReactDOM.unmountComponentAtNode(div);
-    div.remove();
-    no && no();
-  };
-  const component = <Dialog
-    visible={true} onClose={onNo}
-    buttons={[
-      <button onClick={onYes}>yes</button>,
-      <button onClick={onNo}>no</button>
-    ]}
-  >{content}</Dialog>;
-  const div = document.createElement('div');
-  document.body.appendChild(div);
-  ReactDOM.render(component, div);
-};
-
-// 3. modal 输入值为 ReactNode 类型， 返回关闭操作接口
-const modal = (content: ReactNode) => {
-  const onCloseHandle = () => {
-    ReactDOM.render(React.cloneElement(component, {visible: false}), div);
-    ReactDOM.unmountComponentAtNode(div);
-    div.remove();
-  };
-  const component = <Dialog
-    onClose={onCloseHandle}
-    visible={true}
+    onClose={() => {
+      onCloseHandle();
+      onClose && onClose();
+    }}
+    buttons={buttons}
   >{content}</Dialog>;
   const div = document.createElement('div');
   document.body.appendChild(div);
   ReactDOM.render(component, div);
   return onCloseHandle;
 };
+
+// 1. alert
+const alert = (content: string) => {
+  const buttons = [<button onClick={() => {close();}}>OK</button>];
+  const close = modal(content, buttons);
+};
+
+// 2. confirm 比 alert 多两个button
+const confirm = (content: string, yes?: () => void, no?: () => void) => {
+  const onYes = () => {
+    close();
+    yes && yes();
+  };
+  const onNo = () => {
+    close();
+    no && no();
+  };
+  const buttons = [
+    <button onClick={onYes}>yes</button>,
+    <button onClick={onNo}>no</button>
+  ];
+  const close = modal(content, buttons, onNo);
+};
+
 
 export default Dialog;
 export {alert, confirm, modal};
