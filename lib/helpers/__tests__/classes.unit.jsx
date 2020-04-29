@@ -1,4 +1,4 @@
-import classes from '../classes';
+import classes, {scopedClassMaker} from '../classes';
 
 describe('classes', () => {
   it('接受1个 className', () => {
@@ -20,5 +20,15 @@ describe('classes', () => {
   it('接受 0 个参数', () => {
     const result = classes();
     expect(result).toEqual('');
+  });
+});
+
+describe('scopedClassMaker', () => {
+  it('接受字符串或对象', () => {
+    const sc = scopedClassMaker('gulu-layout');
+    expect(sc('')).toEqual('gulu-layout');
+    expect(sc('x')).toEqual('gulu-layout-x');
+    expect(sc({y: true, z: false})).toEqual('gulu-layout-y');
+    expect(sc({y: true, z: true}, {extra: 'red'})).toEqual('gulu-layout-y gulu-layout-z red');
   });
 });

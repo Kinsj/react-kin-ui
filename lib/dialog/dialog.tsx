@@ -2,7 +2,7 @@ import React, {Fragment, ReactElement, ReactNode} from 'react';
 import ReactDOM from 'react-dom';
 import './dialog.scss';
 import {Icon} from '../index';
-import {scopedClassMaker} from '../classes';
+import {scopedClassMaker} from '../helpers/classes';
 
 interface Props {
   visible: boolean;
@@ -31,7 +31,7 @@ const Dialog: React.FunctionComponent<Props> = (props) => {
     // Fragment 相当于一个开发阶段的div，用于把几个div包起来。相对直接用div的好处就是在运行时页面不会出现多余的div嵌套
     <Fragment>
       <div className={sc('mask')} onClick={maskClickHandle}/>
-      <div className={sc()}>
+      <div className={sc('')}>
         <div className={sc('close')} onClick={closeClickHandle}>
           <Icon name="close"/>
         </div>
