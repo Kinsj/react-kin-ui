@@ -4,48 +4,49 @@ import Header from './header';
 import Content from './content';
 import Footer from './footer';
 import Aside from './aside';
+import "./layout.example.scss";
 
 export default function () {
   return (
     <div>
       <div>
         <h1>第一个例子</h1>
-        <Layout style={{height: 200}} className="hi">
-          <Header style={{height: 50}}>Header</Header>
-          <Content>Content</Content>
-          <Footer style={{height: 50}}>Footer</Footer>
+        <Layout className="frame">
+          <Header className="header">Header</Header>
+          <Content className="content">Content</Content>
+          <Footer className="footer">Footer</Footer>
         </Layout>
       </div>
       <div>
         <h1>第二个例子</h1>
-        <Layout style={{height: 200}} className="hi">
-          <Header style={{height: 50}}>Header</Header>
+        <Layout className="frame">
+          <Header className="header">Header</Header>
           <Layout>
-            <Aside style={{width: 100}}>Aside</Aside>
-            <Content>Content</Content>
+            <Aside className="aside">Aside</Aside>
+            <Content className="content">Content</Content>
           </Layout>
-          <Footer style={{height: 50}}>Footer</Footer>
+          <Footer className="footer">Footer</Footer>
         </Layout>
       </div>
       <div>
         <h1>第三个例子</h1>
-        <Layout style={{height: 200}} className="hi">
-          <Header style={{height: 50}}>Header</Header>
+        <Layout className="frame">
+          <Header className="header">Header</Header>
           <Layout>
-            <Content>Content</Content>
-            <Aside style={{width: 100}}>Aside</Aside>
+            <Content className="content">Content</Content>
+            <Aside className="aside">Aside</Aside>
           </Layout>
-          <Footer style={{height: 50}}>Footer</Footer>
+          <Footer className="footer">Footer</Footer>
         </Layout>
       </div>
       <div>
         <h1>第四个例子</h1>
-        <Layout style={{height: 200}} className="hi">
-          <Aside style={{width: 100}}>Aside</Aside>
+        <Layout className="frame">
+          <Aside className="aside">Aside</Aside>
           <Layout>
-            <Header style={{height: 50}}>Header</Header>
-            <Content>Content</Content>
-            <Footer style={{height: 50}}>Footer</Footer>
+            <Header className="header">Header</Header>
+            <Content className="content">Content</Content>
+            <Footer className="footer">Footer</Footer>
           </Layout>
         </Layout>
       </div>

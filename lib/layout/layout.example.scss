@@ -1,0 +1,25 @@
+@mixin fc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header, .footer {
+  height: 50px;
+  background: #2d8cf0;
+  color: #fff;
+  @include fc
+}
+.content {
+  background: #5cadff;
+  color: #fff;
+  @include fc
+}
+.aside {
+  background: lighten(#5cadff, 10%);
+  color: #fff;
+  @include fc;
+  width: 150px;
+}
+.frame {
+  height: 200px;
+}

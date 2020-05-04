@@ -9,7 +9,9 @@ interface Props extends React.HTMLAttributes<HTMLElement> {
 
 const Content: React.FunctionComponent<Props> = ({className, ...rest}) => {
   return (
-    <div className={sc('content', {extra: className})} {...rest}>content</div>
+    <div className={sc('content', {extra: className})} {...rest}>
+      {rest.children}
+    </div>
   );
 };
 
