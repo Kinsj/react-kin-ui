@@ -27,3 +27,9 @@ const Layout: React.FunctionComponent<Props> = (props) => {
 };
 
 export default Layout;
+// 为了方便第三方引入，这里把所有的组件导出
+export {Layout};
+export {default as Header} from './header'
+export {default as Content} from './content'
+export {default as Footer} from './footer'
+export {default as Aside} from './aside'

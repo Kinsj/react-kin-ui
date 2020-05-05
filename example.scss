@@ -1,0 +1,51 @@
+// reset
+* {margin: 0; padding: 0; box-sizing: border-box}
+*::before {box-sizing: border-box;}
+*::after {box-sizing: border-box;}
+h1, h2, h3, h4, h5, h6 {font-weight: normal}
+ul, ol {list-style: none}
+a{text-decoration: none; color: inherit}
+// scss
+$padding: 16px;
+$main-color: #8c54a1;
+.site-page {
+  min-height: 100vh;
+  > .site-header {
+    padding: $padding;
+    box-shadow: 0 2px 8px #f0f1f2;
+    > .logo {
+      display: flex;
+      align-items: center;
+      > span {
+        margin-left: 10px;
+        color: $main-color;
+        font-size: 32px;
+      }
+    }
+  }
+  .site-aside {
+    border-right: 1px solid #eee;
+    h2 {
+      padding: $padding;
+      font-size: 18px;
+    }
+    ul {
+      min-width: 10em;
+      > li {
+        a {
+          padding: $padding;
+          color: #333;
+          display: block;
+          &:hover {
+            color: $main-color;
+            background: rgba($main-color, .1);
+          }
+          &.active {
+            background: $main-color;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

@@ -8,7 +8,7 @@ import "./layout.example.scss";
 
 export default function () {
   return (
-    <div>
+    <div className="layout-example">
       <div>
         <h1>第一个例子</h1>
         <Layout className="frame">

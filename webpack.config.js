@@ -27,7 +27,19 @@ module.exports = {
       {
         test: /\.s[ac]ss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
-      }
+      },
+      // 图片
+      {
+        test: /\.(png|jpg|jpeg|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 50000 // 50k以下用 url-loader
+            },
+          },
+        ],
+      },
     ]
   },
 };

@@ -1,47 +1,49 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter as Router, Route, Link} from 'react-router-dom';
+import {HashRouter as Router, Route, NavLink} from 'react-router-dom';
 
 import IconExample from './lib/icon/iocn.example';
 import ButtonExample from './lib/button.example';
 import DialogExample from './lib/dialog/dialog.example';
 import LayoutExample from './lib/layout/layout.example';
-
+import {Layout, Header, Aside, Footer, Content} from './lib/layout/layout';
+import './example.scss'
+// 使用require的方式导入一个 es6 格式的模块，实际引入的是 {default: xxx}，所以必须加 .default
+const logo = require('./logo.png').default;
 
 ReactDOM.render((
   <Router>
-    <div>
-      <header>
+    <Layout className="site-page">
+      <Header className="site-header">
         <div className="logo">
-          Jason Gulu
+          <img src={logo} width="48"  alt=""/>
+          <span>JasenUI</span>
         </div>
-      </header>
-      <div>
-        <aside>
+      </Header>
+      <Layout>
+        <Aside className="site-aside">
           <h2>组件</h2>
           <ul>
             <li>
-              <Link to="/icon">Icon</Link>
+              <NavLink to="/icon">Icon</NavLink>
             </li>
             <li>
-              <Link to="/button">Button</Link>
+              <NavLink to="/dialog">对话框</NavLink>
             </li>
             <li>
-              <Link to="/dialog">对话框</Link>
-            </li>
-            <li>
-              <Link to="/layout">布局</Link>
+              <NavLink to="/layout">布局</NavLink>
             </li>
           </ul>
-        </aside>
-        <main>
-          <Route path="/icon" component={IconExample} />
-          <Route path="/button" component={ButtonExample} />
-          <Route path="/dialog" component={DialogExample} />
-          <Route path="/layout" component={LayoutExample} />
-        </main>
-      </div>
-    </div>
+        </Aside>
+        <Content>
+          <Route path="/icon" component={IconExample}/>
+          <Route path="/button" component={ButtonExample}/>
+          <Route path="/dialog" component={DialogExample}/>
+          <Route path="/layout" component={LayoutExample}/>
+        </Content>
+      </Layout>
+      <Footer>Footer</Footer>
+    </Layout>
   </Router>
 
 ), document.querySelector('#root'));
