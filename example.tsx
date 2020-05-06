@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {HashRouter as Router, Route, NavLink} from 'react-router-dom';
+import './example.scss'
 
 import IconExample from './lib/icon/iocn.example';
 import ButtonExample from './lib/button.example';
 import DialogExample from './lib/dialog/dialog.example';
 import LayoutExample from './lib/layout/layout.example';
 import {Layout, Header, Aside, Footer, Content} from './lib/layout/layout';
-import './example.scss'
+import FormExample from './lib/form/form.example';
 // 使用require的方式导入一个 es6 格式的模块，实际引入的是 {default: xxx}，所以必须加 .default
 const logo = require('./logo.png').default;
 
@@ -33,6 +34,9 @@ ReactDOM.render((
             <li>
               <NavLink to="/layout">布局</NavLink>
             </li>
+            <li>
+              <NavLink to="/form">表单</NavLink>
+            </li>
           </ul>
         </Aside>
         <Content>
@@ -40,9 +44,10 @@ ReactDOM.render((
           <Route path="/button" component={ButtonExample}/>
           <Route path="/dialog" component={DialogExample}/>
           <Route path="/layout" component={LayoutExample}/>
+          <Route path="/form" component={FormExample}/>
         </Content>
       </Layout>
-      <Footer>Footer</Footer>
+      <Footer>&copy; Jason Kin</Footer>
     </Layout>
   </Router>
 
