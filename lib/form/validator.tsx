@@ -10,7 +10,7 @@ interface FormRule {
 
 type FormRules = Array<FormRule>
 
-interface FormErrors {
+export interface FormErrors {
   [K: string]: string[]
 }
 

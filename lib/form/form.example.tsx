@@ -4,13 +4,14 @@ import Validator from './validator';
 
 const FormExample: React.FunctionComponent = () => {
   const [formData, setFormData] = useState<FormValue>({
-    username: 'kin',
-    password: '123'
+    username: '',
+    password: ''
   });
   const [fields] = useState([
     {name: 'username', label: '用户名', input: {type: 'text'}},
     {name: 'password', label: '密码', input: {type: 'password'}}
   ]);
+  const [errors, setErrors] = useState({});
   const onSubmitHandle: React.FormEventHandler<HTMLFormElement> = () => {
     const rules = [
       {key: 'username', required: true},
@@ -19,8 +20,9 @@ const FormExample: React.FunctionComponent = () => {
       {key: 'username', pattern: /^[A-Za-z0-9]+$/},
       {key: 'password', required: true},
     ];
-    const errors = Validator(formData, rules);
-    console.log(errors);
+
+    setErrors(Validator(formData, rules));
+
   };
   return (
     <Form value={formData} fields={fields}
@@ -30,6 +32,7 @@ const FormExample: React.FunctionComponent = () => {
               <button>取消</button>
             </Fragment>
           }
+          errors={errors}
           onSubmit={onSubmitHandle}
           onChange={setFormData}
     />

@@ -1,4 +1,5 @@
 import React, {ReactFragment} from 'react';
+import {FormErrors} from './validator';
 
 export interface FormValue {
   [K: string]: any
@@ -10,7 +11,8 @@ interface Props {
   fields: Array<{ name: string, label: string, input: { type: string } }>;
   buttons: ReactFragment,
   onChange: (value: FormValue) => void,
-  onSubmit: React.FormEventHandler<HTMLFormElement>
+  onSubmit: React.FormEventHandler<HTMLFormElement>,
+  errors: FormErrors
 }
 
 const Form: React.FunctionComponent<Props> = (props) => {
@@ -33,6 +35,10 @@ const Form: React.FunctionComponent<Props> = (props) => {
                    /*这里使用bind可以把f.name作为前置参数传给onInputChangeHandle
                    * 相当于调用了 onInputChangeHandle(f.name, event)*/
                  }/>
+          {props.errors[f.name] && props.errors[f.name].map( (err, index) => {
+            return <span key={index}>{err}</span>
+          })}
+
         </div>
       )}
       <div>
