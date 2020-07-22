@@ -2,7 +2,7 @@ import React, {ReactFragment} from 'react';
 import {FormErrors} from './validator';
 import Input from '../input/input';
 import classes from '../helpers/classes';
-import './form.scss'
+import './form.scss';
 
 export interface FormValue {
   [K: string]: any
@@ -30,23 +30,28 @@ const Form: React.FunctionComponent<Props> = (props) => {
   };
   return (
     <form onSubmit={onSubmitHandle}>
-      {props.fields.map(f =>
-        <div className={classes('gulu-form-item')} key={f.name}>
-          <span className={classes('gulu-form-label')}>{f.label}</span>
-          <Input type={f.input.type} value={formData[f.name]}
-                 onChange={onInputChangeHandle.bind(null, f.name)
-                   /*这里使用bind可以把f.name作为前置参数传给onInputChangeHandle
-                   * 相当于调用了 onInputChangeHandle(f.name, event)*/
-                 }/>
-          {props.errors[f.name] && props.errors[f.name].map( (err, index) => {
-            return <span key={index}>{err}</span>
-          })}
-
+      <table>
+        {props.fields.map(f =>
+          <tr className={classes('gulu-form-item')} key={f.name}>
+            <td>
+              <span className={classes('gulu-form-label')}>{f.label}</span>
+            </td>
+            <td>
+              <Input type={f.input.type} value={formData[f.name]}
+                     onChange={onInputChangeHandle.bind(null, f.name)
+                       /*这里使用bind可以把f.name作为前置参数传给onInputChangeHandle
+                       * 相当于调用了 onInputChangeHandle(f.name, event)*/
+                     }/>
+              {props.errors[f.name] && props.errors[f.name].map((err, index) => {
+                return <span key={index}>{err}</span>;
+              })}
+            </td>
+          </tr>
+        )}
+        <div className={classes('gulu-form-buttons')}>
+          {props.buttons}
         </div>
-      )}
-      <div className={classes('gulu-form-buttons')}>
-        {props.buttons}
-      </div>
+      </table>
     </form>
   );
 };
