@@ -1,5 +1,8 @@
 import React, {ReactFragment} from 'react';
 import {FormErrors} from './validator';
+import Input from '../input/input';
+import classes from '../helpers/classes';
+import './form.scss'
 
 export interface FormValue {
   [K: string]: any
@@ -28,9 +31,9 @@ const Form: React.FunctionComponent<Props> = (props) => {
   return (
     <form onSubmit={onSubmitHandle}>
       {props.fields.map(f =>
-        <div key={f.name}>
-          {f.label}
-          <input type={f.input.type} value={formData[f.name]}
+        <div className={classes('gulu-form-item')} key={f.name}>
+          <span className={classes('gulu-form-label')}>{f.label}</span>
+          <Input type={f.input.type} value={formData[f.name]}
                  onChange={onInputChangeHandle.bind(null, f.name)
                    /*这里使用bind可以把f.name作为前置参数传给onInputChangeHandle
                    * 相当于调用了 onInputChangeHandle(f.name, event)*/
@@ -41,7 +44,7 @@ const Form: React.FunctionComponent<Props> = (props) => {
 
         </div>
       )}
-      <div>
+      <div className={classes('gulu-form-buttons')}>
         {props.buttons}
       </div>
     </form>

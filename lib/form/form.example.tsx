@@ -1,6 +1,7 @@
 import React, {Fragment, useState} from 'react';
 import Form, {FormValue} from './form';
 import Validator from './validator';
+import './form.example.scss'
 
 const FormExample: React.FunctionComponent = () => {
   const [formData, setFormData] = useState<FormValue>({
@@ -25,17 +26,19 @@ const FormExample: React.FunctionComponent = () => {
 
   };
   return (
-    <Form value={formData} fields={fields}
-          buttons={
-            <Fragment>
-              <button type="submit">提交</button>
-              <button>取消</button>
-            </Fragment>
-          }
-          errors={errors}
-          onSubmit={onSubmitHandle}
-          onChange={setFormData}
-    />
+    <div className="gulu-form-example">
+      <Form value={formData} fields={fields}
+            buttons={
+              <Fragment>
+                <button type="submit">提交</button>
+                <button>取消</button>
+              </Fragment>
+            }
+            errors={errors}
+            onSubmit={onSubmitHandle}
+            onChange={setFormData}
+      />
+    </div>
   );
 };
 
