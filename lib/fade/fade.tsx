@@ -5,7 +5,8 @@ import useDidUpdate from '../helpers/hooks/useDidUpdate';
 
 export interface IFadeProps extends HTMLAttributes<HTMLDivElement> {
   visible: boolean,
-  dur?: number
+  dur?: number,
+  transform?: string
 }
 
 interface IFadeState {
@@ -41,8 +42,10 @@ const Fade: React.FC<IFadeProps> = (props) => {
     clearTimeout(timer.current);
 
     if (fadeState.state === 'enter') {
-      setFadeState(draft => {
-        draft.opacity = true;
+      timer.current = setTimeout(() => {
+        setFadeState(draft => {
+          draft.opacity = true;
+        });
       });
     } else {
       setFadeState(draft => {
@@ -66,8 +69,9 @@ const Fade: React.FC<IFadeProps> = (props) => {
       {
         fadeState.exist &&
         <div style={{
-          transition: `opacity ${dur}ms linear`,
-          opacity: fadeState.opacity ? '1' : '0'
+          transition: `all ${dur}ms linear`,
+          opacity: fadeState.opacity ? '1' : '0',
+          transform: fadeState.opacity ? 'none' : props.transform
         }}
         >
           {props.children}
