@@ -4,11 +4,12 @@ import {HashRouter as Router, Route, NavLink} from 'react-router-dom';
 import './example.scss'
 
 import IconExample from './lib/icon/iocn.example';
-import ButtonExample from './lib/button.example';
+// import ButtonExample from './lib/button.example';
 import DialogExample from './lib/dialog/dialog.example';
 import LayoutExample from './lib/layout/layout.example';
 import {Layout, Header, Aside, Footer, Content} from './lib/layout/layout';
 import FormExample from './lib/form/form.example';
+import FadeExample from './lib/fade/fade.example';
 // 使用require的方式导入一个 es6 格式的模块，实际引入的是 {default: xxx}，所以必须加 .default
 const logo = require('./logo.png').default;
 
@@ -37,14 +38,18 @@ ReactDOM.render((
             <li>
               <NavLink to="/form">表单</NavLink>
             </li>
+            <li>
+              <NavLink to="/fade">fade</NavLink>
+            </li>
           </ul>
         </Aside>
         <Content>
           <Route path="/icon" component={IconExample}/>
-          <Route path="/button" component={ButtonExample}/>
+          {/*<Route path="/button" component={ButtonExample}/>*/}
           <Route path="/dialog" component={DialogExample}/>
           <Route path="/layout" component={LayoutExample}/>
           <Route path="/form" component={FormExample}/>
+          <Route path="/fade" component={FadeExample}/>
         </Content>
       </Layout>
       <Footer>&copy; Jason Kin</Footer>

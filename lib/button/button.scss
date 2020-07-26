@@ -1,0 +1,38 @@
+@import '../helpers/helper';
+.gulu-button {
+  padding: 4px .5em;
+  line-height: 22px;
+  border-radius: 4px;
+  transition: all .3s;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  &-normal {
+    color: #333;
+    border: 1px solid lighten(#333, 50%);
+    background: white;
+    &:hover, &:focus {
+      color: $main-color;
+      border-color: $main-color
+    }
+  }
+  &-important {
+    color: white;
+    background: $main-color;
+    border: 1px solid $main-color;
+    &:hover, &:focus {
+      background: lighten($main-color, 10%);
+      border-color: lighten($main-color, 10%);
+    }
+  }
+  &danger {
+    color: white;
+    background: $danger-color;
+    border: 1px solid $danger-color;
+    &:hover, &:focus {
+      background: lighten($danger-color, 10%);
+      border-color: lighten($danger-color, 10%);
+    }
+  }
+}

@@ -1,13 +1,33 @@
+@import '../helpers/helper';
+
 .gulu-form {
+  color: #333;
+  &-table {
+    border-collapse: collapse;
+  }
   &-item {
     > td {
-      padding-top: 2em;
+      //padding-bottom: 2em;
+      padding-bottom: .4em;
+      vertical-align: top;
     }
-    &:first-child > td {
-      padding-top: 0;
+    &:last-child > td {
+      padding-bottom: 0;
+    }
+    // td 后面 还有td，则后面的td加样式
+    > td + td {
+      padding-left: 1em;
     }
   }
   &-buttons {
     margin-top: 2em;
+  }
+  &-label {
+    line-height: 32px;
+  }
+  &-error {
+    margin-top: .2em;
+    color: $danger-color;
+    font-size: 0.8em;
   }
 }
