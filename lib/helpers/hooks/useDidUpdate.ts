@@ -6,7 +6,7 @@ const useDidUpdate = (fn: React.EffectCallback, deps: React.DependencyList) => {
 
   useEffect(() => {
     if (isDidUpdate.current) {
-      fn && fn();
+      return fn && fn();
     } else {
       isDidUpdate.current = true;
     }

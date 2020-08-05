@@ -42,11 +42,11 @@ const Fade: React.FC<IFadeProps> = (props) => {
     clearTimeout(timer.current);
 
     if (fadeState.state === 'enter') {
-      timer.current = setTimeout(() => {
+      timer.current = window.setTimeout(() => {
         setFadeState(draft => {
           draft.opacity = true;
         });
-      });
+      }, 16);
     } else {
       setFadeState(draft => {
         draft.opacity = false;
@@ -80,6 +80,8 @@ const Fade: React.FC<IFadeProps> = (props) => {
     </>
   );
 };
+
+
 Fade.defaultProps = {
   dur: 300
 };

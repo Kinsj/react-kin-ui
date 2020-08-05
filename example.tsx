@@ -10,6 +10,7 @@ import LayoutExample from './lib/layout/layout.example';
 import {Layout, Header, Aside, Footer, Content} from './lib/layout/layout';
 import FormExample from './lib/form/form.example';
 import FadeExample from './lib/fade/fade.example';
+import SliderExample from './lib/slider/slider.example';
 // 使用require的方式导入一个 es6 格式的模块，实际引入的是 {default: xxx}，所以必须加 .default
 const logo = require('./logo.png').default;
 
@@ -41,6 +42,9 @@ ReactDOM.render((
             <li>
               <NavLink to="/fade">fade</NavLink>
             </li>
+            <li>
+              <NavLink to="/slider">slider</NavLink>
+            </li>
           </ul>
         </Aside>
         <Content>
@@ -50,6 +54,7 @@ ReactDOM.render((
           <Route path="/layout" component={LayoutExample}/>
           <Route path="/form" component={FormExample}/>
           <Route path="/fade" component={FadeExample}/>
+          <Route path="/slider" component={SliderExample}/>
         </Content>
       </Layout>
       <Footer>&copy; Jason Kin</Footer>

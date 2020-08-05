@@ -6,7 +6,7 @@ const useDidUpdateBeforeLayout = (fn: React.EffectCallback, deps: React.Dependen
 
   useLayoutEffect(() => {
     if (isDidUpdate.current) {
-      fn && fn();
+      return fn && fn();
     } else {
       isDidUpdate.current = true;
     }
