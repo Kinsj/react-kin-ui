@@ -1,10 +1,13 @@
-import React, {useLayoutEffect, useRef} from 'react';
+import React, {useLayoutEffect, useEffect, useRef} from 'react';
+
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const useDidUpdateBeforeLayout = (fn: React.EffectCallback, deps: React.DependencyList) => {
 
   const isDidUpdate = useRef(false);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (isDidUpdate.current) {
       return fn && fn();
     } else {

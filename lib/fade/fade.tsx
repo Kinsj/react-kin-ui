@@ -40,7 +40,6 @@ const Fade: React.FC<IFadeProps> = (props) => {
   useDidUpdate(() => {
     // 只要状态产生变化则清除定时器
     clearTimeout(timer.current);
-
     if (fadeState.state === 'enter') {
       timer.current = window.setTimeout(() => {
         setFadeState(draft => {
