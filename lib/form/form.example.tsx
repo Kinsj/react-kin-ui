@@ -22,7 +22,6 @@ const FormExample: React.FunctionComponent = () => {
       {key: 'username', pattern: /^[A-Za-z0-9]+$/},
       {key: 'password', required: true},
     ];
-
     setErrors(Validator(formData, rules));
 
   };

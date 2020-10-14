@@ -1,7 +1,7 @@
 import React, {Fragment, ReactElement, ReactNode} from 'react';
 import ReactDOM from 'react-dom';
 import './dialog.scss';
-import {Icon} from '../index';
+import {Button, Icon} from '../index';
 import {scopedClassMaker} from '../helpers/classes';
 
 interface Props {
@@ -86,7 +86,7 @@ const modal = (content: ReactNode, buttons?: Array<ReactElement>, onClose?: () =
 
 // 1. alert
 const alert = (content: string) => {
-  const buttons = [<button onClick={() => {close();}}>OK</button>];
+  const buttons = [<Button level="important" onClick={() => {close();}}>OK</Button>];
   const close = modal(content, buttons);
 };
 
@@ -101,8 +101,8 @@ const confirm = (content: string, yes?: () => void, no?: () => void) => {
     no && no();
   };
   const buttons = [
-    <button onClick={onYes}>yes</button>,
-    <button onClick={onNo}>no</button>
+    <Button level="important" onClick={onYes}>Yes</Button>,
+    <Button onClick={onNo}>No</Button>
   ];
   const close = modal(content, buttons, onNo);
 };

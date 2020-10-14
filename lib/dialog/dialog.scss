@@ -19,6 +19,12 @@
     padding: 8px 16px;
     display: flex;
     justify-content: flex-end;
+    > * {
+      margin-left: .5em;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
   }
   &-close {
     position: absolute;

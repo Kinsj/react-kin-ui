@@ -1,9 +1,9 @@
 {
-  "name": "gulu-kin",
-  "version": "0.1.1",
+  "name": "react-kin-ui",
+  "version": "0.0.8",
   "description": "",
   "main": "dist/lib/index.js",
-  "types": "dist/lib/index",
+  "types": "dist/index",
   "scripts": {
     "test": "cross-env NODE_ENV=test JEST_JUNIT_OUTPUT=./test-results/jest/results.xml jest --config=jest.config.js --runInBand",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",

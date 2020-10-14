@@ -1,7 +1,7 @@
-import React, {useLayoutEffect, useEffect, useRef} from 'react';
+import React, {useLayoutEffect, useRef} from 'react';
 
-const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+const useIsomorphicLayoutEffect = useLayoutEffect;
+  // typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const useDidUpdateBeforeLayout = (fn: React.EffectCallback, deps: React.DependencyList) => {
 

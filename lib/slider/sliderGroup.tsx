@@ -43,7 +43,7 @@ const SliderGroup: React.FC<Props> = (props) => {
             ...item.props,
             visible: cur === index,
             key: index,
-            onClick: () => setCur(cur === index ? -1 : index)
+            onSelected: () => setCur(cur === index ? -1 : index)
           }))}
     </ul>
   )

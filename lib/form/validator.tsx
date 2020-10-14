@@ -14,11 +14,16 @@ export interface FormErrors {
   [K: string]: string[]
 }
 
+interface IValidator {
+  (formValue: FormValue, rules: FormRules): FormErrors;
+  noError: (errors: FormErrors) => boolean
+}
+
 const isEmpty = (value: any) => {
   return value === null || value === undefined || value === '';
 };
 
-const Validator = (formValue: FormValue, rules: FormRules): FormErrors => {
+const Validator: IValidator = (formValue: FormValue, rules: FormRules): FormErrors => {
   let errors: FormErrors = {};
   const addError = (key: string, msg: string) => {
     if (!errors[key]) {
@@ -44,5 +49,7 @@ const Validator = (formValue: FormValue, rules: FormRules): FormErrors => {
   });
   return errors;
 };
+
+Validator.noError = (errors: FormErrors) => Object.keys(errors).length === 0;
 
 export default Validator;

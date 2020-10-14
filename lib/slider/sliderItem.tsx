@@ -6,7 +6,7 @@ import SliderBody from './sliderBody';
 
 interface Props extends HTMLAttributes<HTMLLIElement> {
   visible?: boolean,
-  onClick?: () => any,
+  onSelected?: () => any,
   children: Array<ReactElement>
 }
 
@@ -14,7 +14,7 @@ const SliderItem: React.FC<Props> = (props) => {
   const {className, children, visible, ...rest} = props;
   return (
     <li className={classes('gulu-slider-title', className)} {...rest}>
-      {withProps(SliderTitle, {...children[0].props, onClick: props.onClick})}
+      {withProps(SliderTitle, {...children[0].props, onClick: () => props.onSelected?.()})}
       {withProps(SliderBody, {...children[1].props, visible: props.visible})}
     </li>
   )
